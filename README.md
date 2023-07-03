@@ -12,9 +12,9 @@
     <img src="https://img.shields.io/badge/licence-GPL3-brightgreen"
          alt="license">
   </a>
-  <a href="https://github.com/mudler/poco/issues"><img src="https://img.shields.io/github/issues/mudler/poco"></a>
+  <a href="https://github.com/skrashevich/poco/issues"><img src="https://img.shields.io/github/issues/skrashevich/poco"></a>
   <img src="https://img.shields.io/badge/made%20with-Go-blue">
-  <a href="https://goreportcard.com/report/github.com/mudler/poco" target=_blank><img src="https://goreportcard.com/badge/github.com/mudler/poco" alt="go report card" /></a>
+  <a href="https://goreportcard.com/report/github.com/skrashevich/poco" target=_blank><img src="https://goreportcard.com/badge/github.com/skrashevich/poco" alt="go report card" /></a>
 </p>
 
 <p align="center">
@@ -34,7 +34,7 @@ poCo (_portable_-_Containers_) packs and converts container images into single, 
 
 ## :computer: Install
 
-Download poCO from the [releases](https://github.com/mudler/poco/releases) and install it in your `PATH`. poCO releases are statically built, so no dependencies (besides `golang` to create `bundles`, are required)
+Download poCO from the [releases](https://github.com/skrashevich/poco/releases) and install it in your `PATH`. poCO releases are statically built, so no dependencies (besides `golang` to create `bundles`, are required)
 
 ## :running: Run 
 
@@ -111,7 +111,7 @@ It can target all architectures supported by golang.
 
 ### Github Action
 
-To run it with Github actions, see [https://github.com/mudler/poco-github-action](https://github.com/mudler/poco-github-action)
+To run it with Github actions, see [https://github.com/skrashevich/poco-github-action](https://github.com/skrashevich/poco-github-action)
 
 ### `bundle`
 

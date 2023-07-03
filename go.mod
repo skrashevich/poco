@@ -1,6 +1,6 @@
-module github.com/mudler/poco
+module github.com/skrashevich/poco
 
-go 1.17
+go 1.20
 
 require (
 	github.com/Masterminds/sprig/v3 v3.1.0

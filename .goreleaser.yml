@@ -2,8 +2,8 @@
 builds:
   - ldflags:
       - -w -s
-      - -X github.com/mudler/poco/internal.Version={{.Tag}}
-      - -X github.com/mudler/poco/internal.Commit={{.Commit}}
+      - -X github.com/skrashevich/poco/internal.Version={{.Tag}}
+      - -X github.com/skrashevich/poco/internal.Commit={{.Commit}}
     env:
       - CGO_ENABLED=0
     goos:

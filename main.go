@@ -26,11 +26,11 @@ import (
 
 	"github.com/mholt/archiver/v3"
 	"github.com/mudler/luet/pkg/api/core/image"
-	"github.com/mudler/poco/internal"
-	"github.com/mudler/poco/pkg/bundler"
-	"github.com/mudler/poco/pkg/extractor"
 	"github.com/otiai10/copy"
 	"github.com/pterm/pterm"
+	"github.com/skrashevich/poco/internal"
+	"github.com/skrashevich/poco/pkg/bundler"
+	"github.com/skrashevich/poco/pkg/extractor"
 	"github.com/urfave/cli"
 )
 
