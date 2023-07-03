@@ -5,6 +5,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"sync"
 
 	cp "github.com/otiai10/copy"
 	ldd "github.com/u-root/u-root/pkg/ldd"
@@ -48,25 +49,34 @@ func Extract(o ...option) error {
 		return err
 	}
 
-	// copy ldd libs
-	for _, f := range files {
-		fmt.Println("Found", f.Name(), f.FullName)
-		p := path.Dir(f.FullName)
-
-		os.MkdirAll(filepath.Join(config.outDir, p), os.ModePerm)
-		if err := cp.Copy(f.FullName, filepath.Join(config.outDir, p, f.Name())); err != nil {
-			return err
+	var wg sync.WaitGroup
+	copyFile := func(src, dest string) {
+		defer wg.Done()
+		if err := cp.Copy(src, dest); err != nil {
+			fmt.Println("Error copying file:", err)
 		}
 	}
 
-	// copy files
+	for _, f := range files {
+		p := path.Dir(f.FullName)
+		destPath := filepath.Join(config.outDir, p)
+		if err := os.MkdirAll(destPath, os.ModePerm); err != nil {
+			return err
+		}
+		wg.Add(1)
+		go copyFile(f.FullName, filepath.Join(destPath, f.Name()))
+	}
+
 	for _, f := range config.files {
 		p := path.Dir(f)
-
-		os.MkdirAll(filepath.Join(config.outDir, p), os.ModePerm)
-		if err := cp.Copy(f, filepath.Join(config.outDir, p, filepath.Base(f))); err != nil {
+		destPath := filepath.Join(config.outDir, p)
+		if err := os.MkdirAll(destPath, os.ModePerm); err != nil {
 			return err
 		}
+		wg.Add(1)
+		go copyFile(f, filepath.Join(destPath, filepath.Base(f)))
 	}
+
+	wg.Wait()
 	return nil
 }
